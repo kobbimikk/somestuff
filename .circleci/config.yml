@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo $PATH; echo $CHECKOUT_KEY"
+          command: "ls $HOME; ls /home/circleci/.ssh; echo $CHECKOUT_KEY"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
