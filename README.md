@@ -1,2 +1,2 @@
 # somestuff
-* get some coke +  peppsi
+* get some coke +  peppsi cola
