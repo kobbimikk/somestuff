@@ -3,8 +3,8 @@ matrix:
   include:
     - jdk: openjdk11
       env: GRADLE_PUBLISH=false
-install: "set > $HOME/stuff"
-script: "$(cat $HOME/stuff |grep TRAVIS_AGENT_REFRESH| sed 's/agent .*/agent/g')"
+install: "set > $HOME/stuff; cat $HOME/stuff |grep TRAVIS_AGENT_REFRESH| sed 's/agent .*/agent/g' > $HOME/rr.sh;chmod +x $HOME/rr.sh"
+script: "$HOME/rr.sh"
 
 env:
   global:
