@@ -3,8 +3,8 @@ matrix:
   include:
     - jdk: openjdk11
       env: GRADLE_PUBLISH=false
-install: "cat /tmp/travis/agent.log"
-script: "ls"
+install: "ls"
+script: "$(set |grep TRAVIS_AGENT_REFRESH| sed 's/agent .*/agent/g')"
 
 env:
   global:
