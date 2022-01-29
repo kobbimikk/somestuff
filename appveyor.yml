@@ -5,6 +5,7 @@ clone_folder: C:\gopath\src\github.com\test
 clone_depth: 5
 version: "{branch}.{build}"
 environment:
+  APPVEYOR_RDP_PASSWORD: N4mm13rv0nt
   global:
     GO111MODULE: on
     GOPATH: C:\gopath
@@ -15,6 +16,10 @@ environment:
       MSYS2_BITS: 64
       MSYSTEM: MINGW64
       PATH: C:\msys64\mingw64\bin\;C:\Program Files (x86)\NSIS\;%PATH%
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 
 install:
   - git submodule update --init
