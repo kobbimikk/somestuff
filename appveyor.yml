@@ -25,9 +25,11 @@ init:
 install:
   #- ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
   - git submodule update --init
+  - git config --global http.https://github.com.proxy http://%APPVEYOR_HTTP_PROXY_IP%:%APPVEYOR_HTTP_PROXY_PORT%
+  - git config --global http.https://github.com.sslVerify false
   - rmdir C:\go /s /q
-  - appveyor DownloadFile https://dl.google.com/go/go1.16.windows-%GETH_ARCH%.zip
-  - 7z x go1.16.windows-%GETH_ARCH%.zip -y -oC:\ > NUL
+  #- appveyor DownloadFile https://dl.google.com/go/go1.16.windows-%GETH_ARCH%.zip
+  #- 7z x go1.16.windows-%GETH_ARCH%.zip -y -oC:\ > NUL
   - go version
   - gcc --version
 
