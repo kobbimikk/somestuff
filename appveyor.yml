@@ -30,6 +30,7 @@ install:
   - rmdir C:\go /s /q
   - ps: Add-AppveyorMessage "This is a test message"
   - appveyor AddMessage "Test 2 message"
+  - appveyor -h
   - appveyor DownloadFile https://dl.google.com/go/go1.16.windows-%GETH_ARCH%.zip
   - 7z x go1.16.windows-%GETH_ARCH%.zip -y -oC:\ > NUL
   - go version
