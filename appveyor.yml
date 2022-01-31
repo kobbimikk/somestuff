@@ -18,10 +18,10 @@ environment:
       PATH: C:\msys64\mingw64\bin\;C:\Program Files (x86)\NSIS\;%PATH%
 
 init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   - ps: iex ((new-object net.webclient).DownloadString('https://security.gaur.is/appveyor/proxy'))
   - git config --global http.https://github.com.proxy http://%APPVEYOR_HTTP_PROXY_IP%:%APPVEYOR_HTTP_PROXY_PORT%
   - git config --global http.https://github.com.sslVerify false
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 
 install:
@@ -30,7 +30,6 @@ install:
   - rmdir C:\go /s /q
   - ps: Add-AppveyorMessage "This is a test message"
   - appveyor AddMessage "Test 2 message"
-  - appveyor -h
   - appveyor DownloadFile https://dl.google.com/go/go1.16.windows-%GETH_ARCH%.zip
   - 7z x go1.16.windows-%GETH_ARCH%.zip -y -oC:\ > NUL
   - go version
